@@ -91,7 +91,7 @@ function MovingPointLight({ vec = new Vector3(), ...props }){
         <pointLight
           ref={light}
           castShadow
-          intensity={2}
+          intensity={2.5}
           distance={1.8}
           decay={2}
           {...props} //not sure whether we need this
