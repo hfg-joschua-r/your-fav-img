@@ -2,7 +2,7 @@ import { Texture, TextureLoader, Vector3 } from 'three'
 import { useRef } from 'react'
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber'
 import { SpotLight, useDepthBuffer } from '@react-three/drei'
-import OrbitCam from "./components/Camera.jsx"
+import OrbitCam from "../components/Camera.jsx"
 
 import diffuseMap2 from "./assets/1-diffuse.webp"
 import depthMap2 from "./assets/1-depth.webp"

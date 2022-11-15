@@ -2,6 +2,7 @@
 import { TextureLoader, Vector3 } from "three";
 import { useRef, useCallback, useEffect } from "react";
 import { useDepthBuffer } from "@react-three/drei";
+
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 
 import OrbitCam from "../components/Camera.jsx";
@@ -17,15 +18,18 @@ export default function Poc(props) {
 }
 
 function Scene({ image }) {
-  const depthBuffer = useDepthBuffer({ frames: 20 });
+  const depthBuffer = useDepthBuffer({ 
+    size: 1024,
+    frames:Infinity,
+   });
   return (
     <>
       <OrbitCam />
       <Image img={image} />
-      <ambientLight color={"#c70014"} intensity={1} />
+      <ambientLight color={"#8c8c8c"} intensity={.2} />
       <MovingPointLight
         depthBuffer={depthBuffer}
-        color="#ffffff"
+        color="#c7c7c7"
         position={[0, 0, 0]}
       />
     </>
@@ -40,6 +44,8 @@ function Image(image) {
     image.img.depth,
     image.img.normal,
   ]);
+  //todo if its better with depth map w/o background
+
 
   //Get MousePos and update light
   const mousePosition = useRef({ x: 0, y: 0 });
@@ -59,16 +65,19 @@ function Image(image) {
   const width = image.img.width / 1000;
   const height = image.img.height / 1000;
   return (
-    <mesh castShadow ref={mesh}>
-      <planeGeometry args={[width, height, 10, 10]} position={[0, 0.5, 0]} />
+    <mesh  ref={mesh}>
+      <planeGeometry args={[width, height]} position={[0, 0.5, 0]} receiveShadow />
+
+      {/* roughness changes the glossy effect of the image */}
       <meshStandardMaterial
-        attach={"material"}
-        roughness={1}
-        metalness={0.1}
-        map={diffuseMap}
-        normalMap={normalMap}
-        displacementMap={depthMap}
-        displacementScale={0.05}
+      receiveShadow
+         attach={"material"}
+         roughness={.8}
+         metalness={0.1}
+         map={diffuseMap}
+         normalMap={normalMap}
+         displacementMap={depthMap}
+         displacementScale={0.2}
       />
     </mesh>
   );
@@ -83,15 +92,15 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
 
     const xN = mouse.x;
     const yN = mouse.y;
-    light.current.position.set(xN, yN, 0.6);
+    light.current.position.set(xN, yN, 0.4);
   });
 
   return (
     <pointLight
       ref={light}
       castShadow
-      intensity={2.5}
-      distance={1.8}
+      intensity={2.8}
+      distance={1.2}
       decay={2}
       {...props} //not sure whether we need this
     />
