@@ -1,5 +1,5 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
-import { TextureLoader, Vector3 } from "three";
+import { MeshStandardMaterial, TextureLoader, Vector3 } from "three";
 import * as THREE from "three";
 import { useRef, useCallback, useEffect } from "react";
 import { useDepthBuffer, Environment, Lightformer } from "@react-three/drei";
@@ -50,26 +50,10 @@ function Scene({ image }) {
         color="#bdf7ff"
         position={[0, 0, 0]}
       />
-
-      {/* Environmnent goes here */}
-      <Environment background={true} resolution={256} >
-        <mesh scale={100}>
-          <sphereGeometry args={[1, 64, 64]} />
-          <LayerMaterial side={THREE.BackSide}>
-            <Color color="black" alpha={1} mode="normal" />
-            <Depth
-              colorA="#080808"
-              colorB="#120202"
-              alpha={10}
-              mode="normal"
-              near={1}
-              far={10}
-              origin={[0, 0, 0]}
-            />
-            <Noise mapping="local" type="cell" scale={0.1} mode="softlight" />
-          </LayerMaterial>
+        <mesh receiveShadow position={[0, 0, -0.1]}>
+          <planeGeometry args={[10 ,10]}  attach="geometry"/>
+          <meshStandardMaterial color={"#101010"} attach="material" roughness={0.8}/>
         </mesh>
-      </Environment>
     </>
   );
 }
@@ -101,15 +85,13 @@ function Image(image) {
   const width = image.img.width / 1000;
   const height = image.img.height / 1000;
   return (
-    <mesh castShadow ref={mesh}>
+    <mesh castShadow ref={mesh} position={[0, 0, 0]}>
       <planeGeometry
         args={[width, height, 10, 10]}
-        position={[0, 0.5, 0]}
         attach="geometry"
       />
       <meshStandardMaterial
         attach={"material"}
-        side={THREE.DoubleSide}
         roughness={1}
         metalness={0.1}
         map={diffuseMap}
