@@ -14,24 +14,23 @@ const Camera = () => {
   // @ts-ignore
 
   //TODO: limit x axis rotation
+  //toDO: implement small rotation animation
   return (
     <orbitControls
-      enableRotate={true}
+      enableRotate={false}
       rotateSpeed={0.2}
       enablePan={false}
       ref={controls}
       args={[camera, domElement]}
       makeDefault
-      fov={70}
+      fov={40}
       position={[0, 0, 0.7]}
-      maxDistance = {1.4}
+      maxDistance = {.8}
       minDistance={.3}
-      zoomSpeed={.1}
+      zoomSpeed={0}
       enableDamping
-      maxAzimuthAngle={Math.PI / 5}
-      maxPolarAngle={Math.PI /1.5}
-      minAzimuthAngle={-Math.PI / 5}
-      minPolarAngle={ Math.PI / 3}
+      minAzimuthmaxAngle={Math.PI / 2}
+      maxAzimuthmaxAngle={Math.PI * 0.2}
     />
   );
 };
