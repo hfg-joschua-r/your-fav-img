@@ -13,7 +13,7 @@ import OrbitCam from "../components/Camera.jsx";
 
 export default function Poc(props) {
   return (
-    <div className="canvas">
+    <div className="h-full">
       <Canvas
         shadows
         gl={{
@@ -50,15 +50,21 @@ function Scene({ image }) {
         color="#bdf7ff"
         position={[0, 0, 0]}
       />
-        <mesh receiveShadow position={[0, 0, -0.1]}>
-          <planeGeometry args={[10 ,10]}  attach="geometry"/>
-          <meshStandardMaterial color={"#101010"} attach="material" roughness={0.8}/>
-        </mesh>
+
+      {/* add other planes left and right */}
+        <mesh position={[0, 0, -0.1]}>
+        <planeGeometry args={[30, 30]} attach="geometry" />
+        <meshBasicMaterial
+          color={"#1C1C1C"}
+          attach="material"
+          reflectivity={2}
+        />
+      </mesh>
     </>
   );
 }
 
-function Image(image) {
+function Image(image, rot) {
   const mesh = useRef();
 
   const [diffuseMap, depthMap, normalMap] = useLoader(TextureLoader, [

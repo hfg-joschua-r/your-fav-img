@@ -1,11 +1,11 @@
 //todo rename pictures
 //group pictures by type
-let assets = []
+let assets = [];
 
 //* Portrait Paintings *//
-import coubertDiffuse from "./Coubert_Desperate/diffuse.jpg"
-import coubertNormal from "./Coubert_Desperate/normal.png"
-import coubertDepth from "./Coubert_Desperate/depth.jpg"
+import coubertDiffuse from "./Coubert_Desperate/diffuse.jpg";
+import coubertNormal from "./Coubert_Desperate/normal.png";
+import coubertDepth from "./Coubert_Desperate/depth.jpg";
 
 const coubert = {
   diffuse: coubertDiffuse,
@@ -13,25 +13,28 @@ const coubert = {
   depth: coubertDepth,
   width: 1200,
   height: 982,
-  type: "hero"
-} 
+  type: "hero",
+};
 
-import gericaultDiffuse from "./Madwoman_Gericault/diffuse.jpeg"
-import gericaultNormal from "./Madwoman_Gericault/normal.jpeg"
-import gericaultDepth from "./Madwoman_Gericault/depth.jpeg"
+import gericaultDiffuse from "./Madwoman_Gericault/diffuse.jpeg";
+import gericaultNormal from "./Madwoman_Gericault/normal.jpeg";
+import gericaultDepth from "./Madwoman_Gericault/depth.jpeg";
 
 const gericault = {
   diffuse: gericaultDiffuse,
   normal: gericaultNormal,
   depth: gericaultDepth,
-  width: 1106,
-  height: 1342, 
-  type: "painting"
-}
+  width: 1106 * 1.4,
+  height: 1342 * 1.4,
+  type: "painting",
+  title: "A Madwoman and Compulsive Gambler, 1822",
+  artist: "Théodore Géricault",
+  medium: "Oil on canvas",
+};
 
-import garshinDiffuse from "./Vsevolod_Garshin/diffuse.jpeg"
-import garshinNormal from "./Vsevolod_Garshin/normal.jpeg"
-import garshinDepth from "./Vsevolod_Garshin/depth.png"
+import garshinDiffuse from "./Vsevolod_Garshin/diffuse.jpeg";
+import garshinNormal from "./Vsevolod_Garshin/normal.jpeg";
+import garshinDepth from "./Vsevolod_Garshin/depth.png";
 
 const garshin = {
   diffuse: garshinDiffuse,
@@ -39,37 +42,39 @@ const garshin = {
   depth: garshinDepth,
   width: 1416,
   height: 1832,
-  type:"painting"
-}
+  type: "painting",
+};
 
-import mengsDiffuse from "./Raphael_Mengs/diffuse.jpeg"
-import mengsNormal from "./Raphael_Mengs/normal.jpeg"
-import mengsDepth from "./Raphael_Mengs/depth.jpeg"
+import mengsDiffuse from "./Raphael_Mengs/diffuse.jpeg";
+import mengsNormal from "./Raphael_Mengs/normal.jpeg";
+import mengsDepth from "./Raphael_Mengs/depth.jpeg";
 
 const mengs = {
-  diffuse:mengsDiffuse,
-  normal:mengsNormal,
-  depth:mengsDepth,
-  width:874,
-  height: 1200,
-  type:"painting"
-}
+  diffuse: mengsDiffuse,
+  normal: mengsNormal,
+  depth: mengsDepth,
+  width: 874 * 1.6,
+  height: 1200 * 1.6,
+  type: "painting",
+  title: "Self-Portrait, 1779",
+  artist: "Anton Raphael Mengs",
+  medium: "Oil on wood panel",
+};
 
-assets.push(coubert, gericault, garshin, mengs);
-
+assets.push(coubert, gericault, mengs); //garshin
 
 //* Portrait images *//
-import joschDiffuse from "./Josch/diffuse.png"
-import joschNormal from "./Josch/normal.png"
-import joschDepth from "./Josch/depth.png"
+import joschDiffuse from "./Josch/diffuse.png";
+import joschNormal from "./Josch/normal.png";
+import joschDepth from "./Josch/depth.png";
 const josch = {
-  diffuse:joschDiffuse,
-  normal:joschNormal,
-  depth:joschDepth,
-  width:1100,
+  diffuse: joschDiffuse,
+  normal: joschNormal,
+  depth: joschDepth,
+  width: 1100,
   height: 1100,
-  type:"portrait"
-}
+  type: "portrait",
+};
 //assets.push(josch)
 // "Meisje met de parel"
 import diffuse from "./1-diffuse.webp";
@@ -78,8 +83,8 @@ import depth from "./1-depth.webp";
 
 //nat img
 import natDif from "./nat.jpg";
-import natNor from "./normalMa.png"
-import natDep from "./Download.png"
+import natNor from "./normalMa.png";
+import natDep from "./Download.png";
 
 // Sample Cube
 import lauren_diffuse from "./lauren_diffuse.jpeg";
@@ -96,20 +101,40 @@ import myDiffuse from "./Bild004_Neg.Nr.N4.jpg";
 import myNormal from "./myNormal2.png";
 import myDepth from "./depthMap.png";
 
-const img1 = { diffuse: diffuse, normal: normal, depth: depth, width:800, height:947, type:"painting_prime" };
+const img1 = {
+  diffuse: diffuse,
+  normal: normal,
+  depth: depth,
+  width: 1600,
+  height: 1894,
+  type: "painting_prime",
+  title:"Girl with a Pearl Earring (1665)",
+  artist:"Johannes Vermeer",
+  medium:"Oil on canvas",
+};
 assets.push(img1);
-const img2 = { diffuse: natDif, normal: natNor, depth: natDep, width:3000, height:2000, type:"landscape" };
-assets.push(img2);
+const img2 = {
+  diffuse: natDif,
+  normal: natNor,
+  depth: natDep,
+  width: 3000,
+  height: 2000,
+  type: "landscape",
+};
+//assets.push(img2);
 
 let img3 = {
   diffuse: portrait_diffuse,
   normal: portrait_normal,
   depth: portrait_depth,
-  width: 684,
-  height: 824,
-  type:"painting"
+  width: 684 * 2.3,
+  height: 824 * 2.3,
+  type: "painting",
+  title: "Bust-length portrait of a young lady, 1584",
+  artist: "Follower of Frans Pourbus the Younger",
+  medium: "oil on oak panel",
 };
-assets.push(img3)
+assets.push(img3);
 
 const imgLauren = {
   diffuse: lauren_diffuse,
@@ -117,9 +142,12 @@ const imgLauren = {
   depth: lauren_depth,
   width: 1920, //1920 × 1307
   height: 1307,
-  type:"portrait_secondary"
+  type: "portrait_secondary",
+  title:"London, UK 2020",
+  artist:"Lauren Noichtl",
+  medium:"Olympus OM-D E-M10 Mark III",
 };
-assets.push(imgLauren)
+assets.push(imgLauren);
 
 const imgData = {
   diffuse: myDiffuse,
@@ -127,8 +155,8 @@ const imgData = {
   depth: myDepth,
   width: 1536,
   height: 1024,
-  type:"landscape"
+  type: "landscape",
 };
-assets.push(imgData);
+//assets.push(imgData);
 
 export default assets;

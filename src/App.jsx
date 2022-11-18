@@ -7,16 +7,18 @@ import ImageRlPainting from "./ImageRlPainting"
 import ImageRlLandscape from "./ImageRlLandscape"
 
 import HeroSection from "./components/HeroSection";
+import PrimeImage from "./components/PrimeImage";
+import GroupImage from "./components/GroupImage"
 // import Poc from "./PocArchived.jsx"
 
 function App() {
   let heroImage;
   let primeImage;
   let secondaryImage;
-  let imgageGroup = [];
+  let imageGroup = [];
 
 
-  const images = assets.map((image, index) => { 
+  assets.map((image, index) => { 
     if(image.type === "hero"){
       heroImage = image;
     }
@@ -27,7 +29,7 @@ function App() {
       secondaryImage = image;
     }
     else{
-      imgageGroup.push(image);
+      imageGroup.push(image);
     }
       // return (
       //   <div key={image.diffuse}>
@@ -42,24 +44,11 @@ function App() {
       {/* <HeroSection /> */}
       {/* <Poc img={assets[0]} /> Debug :))*/}
       {/* todDO: image leicht gedreht  */}
-      <ImageRlPortrait img={primeImage} />
+      <PrimeImage img={primeImage} orientation={"right"}/>
+      <GroupImage imgs={imageGroup}/>
+      <PrimeImage img={secondaryImage} orientation={"left"}/>
     </div>
   )
 }
 
-function imageSwitch(image) {
-  switch(image.type) {
-    case 'portrait':
-      return <ImageRlPortrait img={image} />;
-    case 'landscape':
-      // return <ImageRlLandscape img={image}/>;
-      return <></>; //lets not render landscape for now
-    case 'painting':
-      return <ImageRlPainting img={image} />;
-    case 'hero':
-      return <HeroSection img={image} />;
-    default:
-      return 'internal rendering error';
-  }
-}
 export default App

@@ -28,8 +28,10 @@ const Camera = () => {
       minDistance={.3}
       zoomSpeed={.1}
       enableDamping
-      minAzimuthmaxAngle={Math.PI / 2}
-      maxAzimuthmaxAngle={Math.PI * 0.2}
+      maxAzimuthAngle={Math.PI / 5}
+      maxPolarAngle={Math.PI /1.5}
+      minAzimuthAngle={-Math.PI / 5}
+      minPolarAngle={ Math.PI / 3}
     />
   );
 };

@@ -2,7 +2,12 @@
 import { MeshStandardMaterial, TextureLoader, Vector3 } from "three";
 import * as THREE from "three";
 import { useRef, useCallback, useEffect } from "react";
-import { useDepthBuffer, Environment, Lightformer } from "@react-three/drei";
+import {
+  useDepthBuffer,
+  ScrollControls,
+  Scroll,
+  Lightformer,
+} from "@react-three/drei";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 
 import { EffectComposer, Bloom, Glitch } from "@react-three/postprocessing";
@@ -13,7 +18,7 @@ import OrbitCam from "../components/HeroCamera";
 //TODO: add ScrollControl to allow scrolling
 export default function ImageRlHero(props) {
   return (
-    <div className="box-border w-4/6 h-4/6">
+    <div className="box-border w-3/6 h-4/6">
       <Canvas
         shadows
         gl={{
@@ -21,7 +26,7 @@ export default function ImageRlHero(props) {
         }}
         className="container-xl box-content w-full"
       >
-        <Scene image={props.img} />
+            <Scene image={props.img} />
         <EffectComposer>
           <Glitch
             delay={[1.5, 3.5]} // min and max glitch delay
