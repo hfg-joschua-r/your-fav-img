@@ -13,7 +13,7 @@ const coubert = {
   depth: coubertDepth,
   width: 1200,
   height: 982,
-  type: "painting"
+  type: "hero"
 } 
 
 import gericaultDiffuse from "./Madwoman_Gericault/diffuse.jpeg"
@@ -70,7 +70,7 @@ const josch = {
   height: 1100,
   type:"portrait"
 }
-assets.push(josch)
+//assets.push(josch)
 // "Meisje met de parel"
 import diffuse from "./1-diffuse.webp";
 import normal from "./1-normal.webp";
@@ -96,7 +96,7 @@ import myDiffuse from "./Bild004_Neg.Nr.N4.jpg";
 import myNormal from "./myNormal2.png";
 import myDepth from "./depthMap.png";
 
-const img1 = { diffuse: diffuse, normal: normal, depth: depth, width:800, height:947, type:"painting" };
+const img1 = { diffuse: diffuse, normal: normal, depth: depth, width:800, height:947, type:"painting_prime" };
 assets.push(img1);
 const img2 = { diffuse: natDif, normal: natNor, depth: natDep, width:3000, height:2000, type:"landscape" };
 assets.push(img2);
@@ -117,8 +117,8 @@ const imgLauren = {
   depth: lauren_depth,
   width: 1920, //1920 × 1307
   height: 1307,
-  type:"portrait"
-}
+  type:"portrait_secondary"
+};
 assets.push(imgLauren)
 
 const imgData = {
@@ -130,6 +130,5 @@ const imgData = {
   type:"landscape"
 };
 assets.push(imgData);
-
 
 export default assets;

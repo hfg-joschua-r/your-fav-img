@@ -5,23 +5,32 @@ import { useRef, useCallback, useEffect } from "react";
 import { useDepthBuffer, Environment, Lightformer } from "@react-three/drei";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import { Resizer, KernelSize } from "postprocessing";
-import { LayerMaterial, Depth, Noise, Color } from "lamina";
+import { EffectComposer, Bloom, Glitch } from "@react-three/postprocessing";
+import { Resizer, KernelSize, GlitchMode } from "postprocessing";
 
-import OrbitCam from "../components/Camera.jsx";
+import OrbitCam from "../components/HeroCamera";
 
-export default function Poc(props) {
+//TODO: add ScrollControl to allow scrolling
+export default function ImageRlHero(props) {
   return (
-    <div className="canvas">
+    <div className="box-border w-4/6 h-4/6">
       <Canvas
         shadows
         gl={{
           powerPreference: "high-performance",
         }}
+        className="container-xl box-content w-full"
       >
         <Scene image={props.img} />
         <EffectComposer>
+          <Glitch
+            delay={[1.5, 3.5]} // min and max glitch delay
+            duration={[0.6, 1.0]} // min and max glitch duration
+            strength={[0.3, 1.0]} // min and max glitch strength
+            mode={GlitchMode.SPORADIC} // glitch mode
+            active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
+            ratio={0.85} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
+          />
           <Bloom
             intensity={1.0} // The bloom intensity.
             blurPass={undefined} // A blur pass.
@@ -50,10 +59,14 @@ function Scene({ image }) {
         color="#bdf7ff"
         position={[0, 0, 0]}
       />
-        <mesh receiveShadow position={[0, 0, -0.1]}>
-          <planeGeometry args={[10 ,10]}  attach="geometry"/>
-          <meshStandardMaterial color={"#101010"} attach="material" roughness={0.8}/>
-        </mesh>
+      <mesh position={[0, 0, -0.1]}>
+        <planeGeometry args={[10, 10]} attach="geometry" />
+        <meshBasicMaterial
+          color={"#101010"}
+          attach="material"
+          reflectivity={2}
+        />
+      </mesh>
     </>
   );
 }
@@ -86,7 +99,7 @@ function Image(image) {
   const height = image.img.height / 1000;
   return (
     <mesh castShadow ref={mesh} position={[0, 0, 0]}>
-      <planeGeometry args={[width, height, 10,10]} attach="geometry" />
+      <planeGeometry args={[width, height, 10, 10]} attach="geometry" />
       <meshStandardMaterial
         attach={"material"}
         roughness={1}
