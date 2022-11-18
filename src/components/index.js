@@ -3,9 +3,9 @@
 let assets = [];
 
 //* Portrait Paintings *//
-import coubertDiffuse from "./Coubert_Desperate/diffuse.jpg";
-import coubertNormal from "./Coubert_Desperate/normal.png";
-import coubertDepth from "./Coubert_Desperate/depth.jpg";
+import coubertDiffuse from "/assets/Coubert_Desperate/diffuse.jpg";
+import coubertNormal from "/assets/Coubert_Desperate/normal.png";
+import coubertDepth from "/assets/Coubert_Desperate/depth.jpg";
 
 const coubert = {
   diffuse: coubertDiffuse,
@@ -16,9 +16,9 @@ const coubert = {
   type: "hero",
 };
 
-import gericaultDiffuse from "./Madwoman_Gericault/diffuse.jpeg";
-import gericaultNormal from "./Madwoman_Gericault/normal.jpeg";
-import gericaultDepth from "./Madwoman_Gericault/depth.jpeg";
+import gericaultDiffuse from "/assets/Madwoman_Gericault/diffuse.jpeg";
+import gericaultNormal from "/assets/Madwoman_Gericault/normal.jpeg";
+import gericaultDepth from "/assets/Madwoman_Gericault/depth.jpeg";
 
 const gericault = {
   diffuse: gericaultDiffuse,
@@ -32,9 +32,9 @@ const gericault = {
   medium: "Oil on canvas",
 };
 
-import garshinDiffuse from "./Vsevolod_Garshin/diffuse.jpeg";
-import garshinNormal from "./Vsevolod_Garshin/normal.jpeg";
-import garshinDepth from "./Vsevolod_Garshin/depth.png";
+import garshinDiffuse from "/assets/Vsevolod_Garshin/diffuse.jpeg";
+import garshinNormal from "/assets/Vsevolod_Garshin/normal.jpeg";
+import garshinDepth from "/assets/Vsevolod_Garshin/depth.png";
 
 const garshin = {
   diffuse: garshinDiffuse,
@@ -45,9 +45,9 @@ const garshin = {
   type: "painting",
 };
 
-import mengsDiffuse from "./Raphael_Mengs/diffuse.jpeg";
-import mengsNormal from "./Raphael_Mengs/normal.jpeg";
-import mengsDepth from "./Raphael_Mengs/depth.jpeg";
+import mengsDiffuse from "/assets/Raphael_Mengs/diffuse.jpeg";
+import mengsNormal from "/assets/Raphael_Mengs/normal.jpeg";
+import mengsDepth from "/assets/Raphael_Mengs/depth.jpeg";
 
 const mengs = {
   diffuse: mengsDiffuse,
@@ -64,9 +64,9 @@ const mengs = {
 assets.push(coubert, gericault, mengs); //garshin
 
 //* Portrait images *//
-import joschDiffuse from "./Josch/diffuse.png";
-import joschNormal from "./Josch/normal.png";
-import joschDepth from "./Josch/depth.png";
+import joschDiffuse from "/assets/Josch/diffuse.png";
+import joschNormal from "/assets/Josch/normal.png";
+import joschDepth from "/assets/Josch/depth.png";
 const josch = {
   diffuse: joschDiffuse,
   normal: joschNormal,
@@ -77,29 +77,29 @@ const josch = {
 };
 //assets.push(josch)
 // "Meisje met de parel"
-import diffuse from "./1-diffuse.webp";
-import normal from "./1-normal.webp";
-import depth from "./1-depth.webp";
+import diffuse from "/assets/1-diffuse.webp";
+import normal from "/assets/1-normal.webp";
+import depth from "/assets/1-depth.webp";
 
 //nat img
-import natDif from "./nat.jpg";
-import natNor from "./normalMa.png";
-import natDep from "./Download.png";
+import natDif from "/assets/nat.jpg";
+import natNor from "/assets/normalMa.png";
+import natDep from "/assets/Download.png";
 
 // Sample Cube
-import lauren_diffuse from "./lauren_diffuse.jpeg";
-import lauren_normal from "./lauren_normal.jpeg";
-import lauren_depth from "./lauren_depth.jpeg";
+import lauren_diffuse from "/assets/lauren_diffuse.jpeg";
+import lauren_normal from "/assets/lauren_normal.jpeg";
+import lauren_depth from "/assets/lauren_depth.jpeg";
 
 // Portrait
-import portrait_diffuse from "./portrait_diffuse.webp";
-import portrait_normal from "./portrait_normal.webp";
-import portrait_depth from "./portrait_depth.webp";
+import portrait_diffuse from "/assets/portrait_diffuse.webp";
+import portrait_normal from "/assets/portrait_normal.webp";
+import portrait_depth from "/assets/portrait_depth.webp";
 
 //my own
-import myDiffuse from "./Bild004_Neg.Nr.N4.jpg";
-import myNormal from "./myNormal2.png";
-import myDepth from "./depthMap.png";
+import myDiffuse from "/assets/Bild004_Neg.Nr.N4.jpg";
+import myNormal from "/assets/myNormal2.png";
+import myDepth from "/assets/depthMap.png";
 
 const img1 = {
   diffuse: diffuse,

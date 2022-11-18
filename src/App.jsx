@@ -1,4 +1,4 @@
-import assets from "./assets/index";
+import assets from "./components/index";
 import "./App.css"
 import Poc from "./Poc/"
 
