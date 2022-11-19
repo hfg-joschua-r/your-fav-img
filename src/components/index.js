@@ -32,18 +32,18 @@ const gericault = {
   medium: "Oil on canvas",
 };
 
-import garshinDiffuse from "/assets/Vsevolod_Garshin/diffuse.jpeg";
-import garshinNormal from "/assets/Vsevolod_Garshin/normal.jpeg";
-import garshinDepth from "/assets/Vsevolod_Garshin/depth.png";
+// import garshinDiffuse from "/assets/Vsevolod_Garshin/diffuse.jpeg";
+// import garshinNormal from "/assets/Vsevolod_Garshin/normal.jpeg";
+// import garshinDepth from "/assets/Vsevolod_Garshin/depth.png";
 
-const garshin = {
-  diffuse: garshinDiffuse,
-  normal: garshinNormal,
-  depth: garshinDepth,
-  width: 1416,
-  height: 1832,
-  type: "painting",
-};
+// const garshin = {
+//   diffuse: garshinDiffuse,
+//   normal: garshinNormal,
+//   depth: garshinDepth,
+//   width: 1416,
+//   height: 1832,
+//   type: "painting",
+// };
 
 import mengsDiffuse from "/assets/Raphael_Mengs/diffuse.jpeg";
 import mengsNormal from "/assets/Raphael_Mengs/normal.jpeg";
@@ -64,17 +64,17 @@ const mengs = {
 assets.push(coubert, gericault, mengs); //garshin
 
 //* Portrait images *//
-import joschDiffuse from "/assets/Josch/diffuse.png";
-import joschNormal from "/assets/Josch/normal.png";
-import joschDepth from "/assets/Josch/depth.png";
-const josch = {
-  diffuse: joschDiffuse,
-  normal: joschNormal,
-  depth: joschDepth,
-  width: 1100,
-  height: 1100,
-  type: "portrait",
-};
+// import joschDiffuse from "/assets/Josch/diffuse.png";
+// import joschNormal from "/assets/Josch/normal.png";
+// import joschDepth from "/assets/Josch/depth.png";
+// const josch = {
+//   diffuse: joschDiffuse,
+//   normal: joschNormal,
+//   depth: joschDepth,
+//   width: 1100,
+//   height: 1100,
+//   type: "portrait",
+// };
 //assets.push(josch)
 // "Meisje met de parel"
 import diffuse from "/assets/1-diffuse.webp";
@@ -82,9 +82,9 @@ import normal from "/assets/1-normal.webp";
 import depth from "/assets/1-depth.webp";
 
 //nat img
-import natDif from "/assets/nat.jpg";
-import natNor from "/assets/normalMa.png";
-import natDep from "/assets/Download.png";
+// import natDif from "/assets/nat.jpg";
+// import natNor from "/assets/normalMa.png";
+// import natDep from "/assets/Download.png";
 
 // Sample Cube
 import lauren_diffuse from "/assets/lauren_diffuse.jpeg";
@@ -97,9 +97,9 @@ import portrait_normal from "/assets/portrait_normal.webp";
 import portrait_depth from "/assets/portrait_depth.webp";
 
 //my own
-import myDiffuse from "/assets/Bild004_Neg.Nr.N4.jpg";
-import myNormal from "/assets/myNormal2.png";
-import myDepth from "/assets/depthMap.png";
+// import myDiffuse from "/assets/Bild004_Neg.Nr.N4.jpg";
+// import myNormal from "/assets/myNormal2.png";
+// import myDepth from "/assets/depthMap.png";
 
 const img1 = {
   diffuse: diffuse,
@@ -113,14 +113,14 @@ const img1 = {
   medium:"Oil on canvas",
 };
 assets.push(img1);
-const img2 = {
-  diffuse: natDif,
-  normal: natNor,
-  depth: natDep,
-  width: 3000,
-  height: 2000,
-  type: "landscape",
-};
+// const img2 = {
+//   diffuse: natDif,
+//   normal: natNor,
+//   depth: natDep,
+//   width: 3000,
+//   height: 2000,
+//   type: "landscape",
+// };
 //assets.push(img2);
 
 let img3 = {
@@ -149,14 +149,14 @@ const imgLauren = {
 };
 assets.push(imgLauren);
 
-const imgData = {
-  diffuse: myDiffuse,
-  normal: myNormal,
-  depth: myDepth,
-  width: 1536,
-  height: 1024,
-  type: "landscape",
-};
+// const imgData = {
+//   diffuse: myDiffuse,
+//   normal: myNormal,
+//   depth: myDepth,
+//   width: 1536,
+//   height: 1024,
+//   type: "landscape",
+// };
 //assets.push(imgData);
 
 export default assets;
