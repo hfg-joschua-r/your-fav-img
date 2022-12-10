@@ -1,5 +1,10 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
-import { MeshStandardMaterial, TextureLoader, Vector3 } from "three";
+import {
+  MeshStandardMaterial,
+  TextureLoader,
+  Vector3,
+  MeshBasicMaterial,
+} from "three";
 import * as THREE from "three";
 import { useRef, useCallback, useEffect } from "react";
 import { useDepthBuffer, Environment, Lightformer } from "@react-three/drei";
@@ -7,7 +12,6 @@ import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { Resizer, KernelSize } from "postprocessing";
-import { LayerMaterial, Depth, Noise, Color } from "lamina";
 
 import OrbitCam from "../components/Camera.jsx";
 
@@ -52,7 +56,7 @@ function Scene({ image }) {
       />
 
       {/* add other planes left and right */}
-        <mesh position={[0, 0, -0.1]}>
+      <mesh position={[0, 0, -2]}>
         <planeGeometry args={[30, 30]} attach="geometry" />
         <meshBasicMaterial
           color={"#1C1C1C"}
@@ -90,19 +94,40 @@ function Image(image, rot) {
   //scale image down to about 1 / 1
   const width = image.img.width / 1000;
   const height = image.img.height / 1000;
+
+  //rotation:
+  const group = useRef();
+  useFrame(
+    ({ pointer }) =>
+      (group.current.rotation.y = THREE.MathUtils.lerp(
+        group.current.rotation.y,
+        pointer.x * (Math.PI / 8),
+        0.005
+      ))
+  );
   return (
-    <mesh castShadow ref={mesh} position={[0, 0, 0]}>
-      <planeGeometry args={[width, height, 10,10]} attach="geometry" />
-      <meshStandardMaterial
-        attach={"material"}
-        roughness={1}
-        metalness={0.1}
-        map={diffuseMap}
-        normalMap={normalMap}
-        displacementMap={depthMap}
-        displacementScale={0.05}
-      />
-    </mesh>
+    <group ref={group}>
+      <mesh castShadow ref={mesh} position={[0, 0, 0]}>
+        <planeGeometry args={[width, height, 10, 10]} attach="geometry" />
+        <meshStandardMaterial
+          attach={"material"}
+          roughness={1}
+          metalness={0.1}
+          map={diffuseMap}
+          normalMap={normalMap}
+          displacementMap={depthMap}
+          displacementScale={0.05}
+        />
+      </mesh>
+    </group>
+    // <mesh>
+    //   <planeGeometry shadows attach="geometry" args={[width, height]} />
+    //   <meshBasicMaterial
+    //     attach="material"
+    //     map={diffuseMap}
+    //     depthMap={depthMap}
+    //   />
+    // </mesh>
   );
 }
 

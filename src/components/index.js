@@ -64,18 +64,21 @@ const mengs = {
 assets.push(coubert, gericault, mengs); //garshin
 
 //* Portrait images *//
-// import joschDiffuse from "/assets/Josch/diffuse.png";
-// import joschNormal from "/assets/Josch/normal.png";
-// import joschDepth from "/assets/Josch/depth.png";
-// const josch = {
-//   diffuse: joschDiffuse,
-//   normal: joschNormal,
-//   depth: joschDepth,
-//   width: 1100,
-//   height: 1100,
-//   type: "portrait",
-// };
-//assets.push(josch)
+import joschDiffuse from "/assets/Josch/diffuse.png";
+import joschNormal from "/assets/Josch/normal.png";
+import joschDepth from "/assets/Josch/depth.png";
+const josch = {
+  diffuse: joschDiffuse,
+  normal: joschNormal,
+  depth: joschDepth,
+  width: 2200,
+  height: 2200,
+  type: "portrait_secondary",
+  title:"FLUUR, 2022",
+  artist:"Joschua Rothenbacher",
+  medium:"Olympus OM-D E-M10 Mark III",
+};
+assets.push(josch)
 // "Meisje met de parel"
 import diffuse from "/assets/1-diffuse.webp";
 import normal from "/assets/1-normal.webp";
@@ -87,9 +90,9 @@ import depth from "/assets/1-depth.webp";
 // import natDep from "/assets/Download.png";
 
 // Sample Cube
-import lauren_diffuse from "/assets/lauren_diffuse.jpeg";
-import lauren_normal from "/assets/lauren_normal.jpeg";
-import lauren_depth from "/assets/lauren_depth.jpeg";
+// import lauren_diffuse from "/assets/lauren_diffuse.jpeg";
+// import lauren_normal from "/assets/lauren_normal.jpeg";
+// import lauren_depth from "/assets/lauren_depth.jpeg";
 
 // Portrait
 import portrait_diffuse from "/assets/portrait_diffuse.webp";
@@ -136,18 +139,18 @@ let img3 = {
 };
 assets.push(img3);
 
-const imgLauren = {
-  diffuse: lauren_diffuse,
-  normal: lauren_normal,
-  depth: lauren_depth,
-  width: 1920, //1920 × 1307
-  height: 1307,
-  type: "portrait_secondary",
-  title:"London, UK 2020",
-  artist:"Lauren Noichtl",
-  medium:"Olympus OM-D E-M10 Mark III",
-};
-assets.push(imgLauren);
+// const imgLauren = {
+//   diffuse: lauren_diffuse,
+//   normal: lauren_normal,
+//   depth: lauren_depth,
+//   width: 1920, //1920 × 1307
+//   height: 1307,
+//   type: "portrait_secondary",
+//   title:"London, UK 2020",
+//   artist:"Lauren Noichtl",
+//   medium:"Olympus OM-D E-M10 Mark III",
+// };
+// assets.push(imgLauren);
 
 // const imgData = {
 //   diffuse: myDiffuse,
