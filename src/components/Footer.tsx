@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 
 const Footer = () => {
   return (
@@ -13,6 +13,7 @@ const Footer = () => {
               LinkedIn
             </a>
           </li>
+
           <li className="mr-3">
             <a
               href="https://twitter.com/cetaryl_"
@@ -39,5 +40,28 @@ const Footer = () => {
     </footer>
   );
 };
+function getRelativeCoordinates(event, referenceElement) {
+  const position = {
+    x: event.pageX,
+    y: event.pageY,
+  };
 
+  const offset = {
+    left: referenceElement.offsetLeft,
+    top: referenceElement.offsetTop,
+  };
+
+  let reference = referenceElement.offsetParent;
+
+  while (reference) {
+    offset.left += reference.offsetLeft;
+    offset.top += reference.offsetTop;
+    reference = reference.offsetParent;
+  }
+
+  return {
+    x: position.x - offset.left,
+    y: position.y - offset.top,
+  };
+}
 export default Footer;
