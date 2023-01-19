@@ -1,24 +1,24 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
-import { MeshStandardMaterial, TextureLoader, Vector3 } from "three";
-import * as THREE from "three";
-import { useRef, useCallback, useEffect } from "react";
 import {
-  useDepthBuffer,
-  ScrollControls,
-  Scroll,
   Lightformer,
+  Scroll,
+  ScrollControls,
+  useDepthBuffer,
 } from "@react-three/drei";
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { useCallback, useEffect, useRef } from "react";
+import * as THREE from "three";
+import { MeshStandardMaterial, TextureLoader, Vector3 } from "three";
 
-import { EffectComposer, Bloom, Glitch } from "@react-three/postprocessing";
-import { Resizer, KernelSize, GlitchMode } from "postprocessing";
+import { Bloom, EffectComposer, Glitch } from "@react-three/postprocessing";
+import { GlitchMode, KernelSize, Resizer } from "postprocessing";
 
 import OrbitCam from "../components/HeroCamera";
 
 //TODO: add ScrollControl to allow scrolling
 export default function ImageRlHero(props) {
   return (
-    <div className="box-border w-3/6 h-4/6">
+    <>
       <Canvas
         shadows
         gl={{
@@ -26,16 +26,8 @@ export default function ImageRlHero(props) {
         }}
         className="container-xl box-content w-full"
       >
-            <Scene image={props.img} />
+        <Scene image={props.img} />
         <EffectComposer>
-          <Glitch
-            delay={[1.5, 3.5]} // min and max glitch delay
-            duration={[0.6, 1.0]} // min and max glitch duration
-            strength={[0.3, 1.0]} // min and max glitch strength
-            mode={GlitchMode.SPORADIC} // glitch mode
-            active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
-            ratio={0.85} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
-          />
           <Bloom
             intensity={1.0} // The bloom intensity.
             blurPass={undefined} // A blur pass.
@@ -47,21 +39,21 @@ export default function ImageRlHero(props) {
           />
         </EffectComposer>
       </Canvas>
-    </div>
+    </>
   );
 }
 
 function Scene({ image }) {
-  const depthBuffer = useDepthBuffer({ frames: 20 });
+  const depthBuffer = useDepthBuffer({ frames: 120 });
   return (
     <>
       <OrbitCam />
       <Image img={image} />
       {/* light tone warmer and less redish */}
-      <ambientLight color={"#1C0000"} intensity={20} />
+      <ambientLight color={"#1F2702"} intensity={20} />
       <MovingPointLight
         depthBuffer={depthBuffer}
-        color="#bdf7ff"
+        color="#F9FFE6"
         position={[0, 0, 0]}
       />
       <mesh position={[0, 0, -0.1]}>
@@ -69,7 +61,7 @@ function Scene({ image }) {
         <meshBasicMaterial
           color={"#101010"}
           attach="material"
-          reflectivity={2}
+          reflectivity={1}
         />
       </mesh>
     </>
@@ -103,16 +95,21 @@ function Image(image) {
   const width = image.img.width / 1000;
   const height = image.img.height / 1000;
   return (
-    <mesh castShadow ref={mesh} position={[0, 0, 0]}>
-      <planeGeometry args={[width, height, 10, 10]} attach="geometry" />
+    <mesh ref={mesh} position={[0, 0, 0]}>
+      <planeGeometry
+        castShadow
+        receiveShadow
+        args={[width, height, 10, 10]}
+        attach="geometry"
+      />
       <meshStandardMaterial
         attach={"material"}
-        roughness={1}
-        metalness={0.1}
+        roughness={0.8}
+        metalness={0}
         map={diffuseMap}
         normalMap={normalMap}
         displacementMap={depthMap}
-        displacementScale={0.05}
+        displacementScale={0.02}
       />
     </mesh>
   );
@@ -120,11 +117,7 @@ function Image(image) {
 
 function MovingPointLight({ vec = new Vector3(), ...props }) {
   const light = useRef();
-  const viewport = useThree((state) => state.viewport);
   useFrame(({ pointer, mouse }) => {
-    const x = (pointer.x * viewport.width) / 2;
-    const y = (pointer.y * viewport.height) / 2;
-
     const xN = mouse.x;
     const yN = mouse.y;
     light.current.position.set(xN, yN, 0.3);
@@ -134,7 +127,7 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
     <pointLight
       ref={light}
       castShadow
-      intensity={2}
+      intensity={1}
       distance={1}
       decay={2.5}
       {...props}

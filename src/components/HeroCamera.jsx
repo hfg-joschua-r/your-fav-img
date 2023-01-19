@@ -1,5 +1,5 @@
+import { extend, useFrame, useThree } from "@react-three/fiber";
 import React, { useRef } from "react";
-import { useFrame, useThree, extend } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 extend({ OrbitControls });
 const Camera = () => {
@@ -18,15 +18,16 @@ const Camera = () => {
   return (
     <orbitControls
       enableRotate={false}
+      enableZoom={true}
       rotateSpeed={0.2}
-      enablePan={false}
+      enablePan={true}
       ref={controls}
       args={[camera, domElement]}
       makeDefault
       fov={40}
       position={[0, 0, 0.7]}
-      maxDistance = {.8}
-      minDistance={.3}
+      maxDistance={0.8}
+      minDistance={0.3}
       zoomSpeed={0}
       enableDamping
       minAzimuthmaxAngle={Math.PI / 2}
