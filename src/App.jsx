@@ -28,7 +28,7 @@ function App() {
     <>
       <div className="App bg-ciBlack h-full hidden lg:block">
         <div className="">
-          <h1 className="text-ciYellow text-5xl font-serif text-left pl-9 pt-6">
+          <h1 className="text-ciYellow text-5xl font-serif text-left pl-20 pt-6">
             your-fav-img
           </h1>
         </div>
@@ -36,9 +36,10 @@ function App() {
         {/* todDO: image leicht gedreht  */}
         <PrimeImage img={primeImage} orientation={"right"} />
         <GroupImage imgs={imageGroup} />
-        <PrimeImage img={secondaryImage} orientation={"left"} />
         <Footer />
       </div>
+
+      {/* MOBILE VERSION */}
       <div className="App bg-black h-full min-h-screen block lg:hidden">
         <h1 className="text-ciYellow text-5xl font-serif p-4">your-fave-img</h1>
         <h1 className="text-ciYellow text-2xl font-serif p-4">

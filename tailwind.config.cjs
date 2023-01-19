@@ -6,6 +6,7 @@ module.exports = {
       ciYellow: "hsl(73, 100%, 66%)",
       ciYellowLight: "hsl(73, 95%, 80%)",
       ciYellowLightest: "hsl(73, 99%, 95%)",
+      ciYellowAccent: "hsl(73, 100%, 20%)",
       ciYellowDark: "hsl(73, 90%, 8%)",
 
       ciBlack: "hsla(79, 60%, 3%, 1)",
@@ -21,5 +22,5 @@ module.exports = {
       borderRadius: {},
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

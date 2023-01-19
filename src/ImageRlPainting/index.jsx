@@ -1,17 +1,17 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
+import { Environment, Lightformer, useDepthBuffer } from "@react-three/drei";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { useCallback, useEffect, useRef } from "react";
+import * as THREE from "three";
 import {
+  MeshBasicMaterial,
   MeshStandardMaterial,
   TextureLoader,
   Vector3,
-  MeshBasicMaterial,
 } from "three";
-import * as THREE from "three";
-import { useRef, useCallback, useEffect } from "react";
-import { useDepthBuffer, Environment, Lightformer } from "@react-three/drei";
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import { Resizer, KernelSize } from "postprocessing";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { KernelSize, Resizer } from "postprocessing";
 
 import OrbitCam from "../components/Camera.jsx";
 
@@ -48,7 +48,7 @@ function Scene({ image }) {
       <OrbitCam />
       <Image img={image} />
       {/* light tone warmer and less redish */}
-      <ambientLight color={"#1C0000"} intensity={20} />
+      <ambientLight color={"#E7FC9C"} intensity={0.15} />
       <MovingPointLight
         depthBuffer={depthBuffer}
         color="#bdf7ff"
