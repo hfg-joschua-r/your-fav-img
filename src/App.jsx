@@ -2,6 +2,7 @@ import "./App.css";
 import assets from "./components/index";
 
 import Footer from "./components/Footer";
+import FullWidth from "./components/FullWidth";
 import GroupImage from "./components/GroupImage";
 import HeroSection from "./components/HeroSection";
 import PrimeImage from "./components/PrimeImage";
@@ -33,9 +34,9 @@ function App() {
           </h1>
         </div>
         <HeroSection img={heroImage} />
-        {/* todDO: image leicht gedreht  */}
         <PrimeImage img={primeImage} orientation={"right"} />
         <GroupImage imgs={imageGroup} />
+        <FullWidth img={secondaryImage} />
         <Footer />
       </div>
 

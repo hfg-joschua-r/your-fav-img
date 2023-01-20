@@ -18,7 +18,7 @@ const Camera = () => {
   return (
     <orbitControls
       enableRotate={false}
-      enableZoom={true}
+      enableZoom={false}
       rotateSpeed={0.2}
       enablePan={true}
       ref={controls}
