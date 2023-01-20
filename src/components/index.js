@@ -3,9 +3,9 @@
 let assets = [];
 
 //* Portrait Paintings *//
-import coubertDepth from "/assets/Coubert_Desperate/depth.jpg";
-import coubertDiffuse from "/assets/Coubert_Desperate/diffuse.jpg";
-import coubertNormal from "/assets/Coubert_Desperate/normal.jpg";
+import coubertDepth from "/assets/Coubert_Desperate/depth.webp";
+import coubertDiffuse from "/assets/Coubert_Desperate/diffuse.webp";
+import coubertNormal from "/assets/Coubert_Desperate/normal.webp";
 
 const coubert = {
   diffuse: coubertDiffuse,

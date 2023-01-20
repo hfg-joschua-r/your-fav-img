@@ -50,7 +50,7 @@ function Scene({ image }) {
       <OrbitCam />
       <Image img={image} />
       {/* light tone warmer and less redish */}
-      <ambientLight color={"#1F2702"} intensity={20} />
+      <ambientLight color={"#F2FCCF"} intensity={0.4} />
       <MovingPointLight
         depthBuffer={depthBuffer}
         color="#F9FFE6"
@@ -127,7 +127,7 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
     <pointLight
       ref={light}
       castShadow
-      intensity={1}
+      intensity={1.75}
       distance={1}
       decay={2.5}
       {...props}
