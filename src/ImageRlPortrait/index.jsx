@@ -1,7 +1,7 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
 import { Environment, Lightformer, useDepthBuffer } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import {
   MeshBasicMaterial,
@@ -25,17 +25,6 @@ export default function Poc(props) {
         }}
       >
         <Scene image={props.img} />
-        <EffectComposer>
-          <Bloom
-            intensity={1.0} // The bloom intensity.
-            blurPass={undefined} // A blur pass.
-            width={Resizer.AUTO_SIZE} // render width
-            height={Resizer.AUTO_SIZE} // render height
-            kernelSize={KernelSize.LARGE} // blur kernel size
-            luminanceThreshold={0.6} // luminance threshold. Raise this value to mask out darker elements in the scene.
-            luminanceSmoothing={0.5} // smoothness of the luminance threshold. Range is [0, 1]
-          />
-        </EffectComposer>
       </Canvas>
     </div>
   );
@@ -54,6 +43,7 @@ function Scene({ image }) {
         color="#bdf7ff"
         position={[0, 0, 0]}
       />
+      <MovingSpotlights />
 
       {/* add other planes left and right */}
       <mesh position={[0, 0, -2]}>
@@ -146,5 +136,40 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
       decay={2.5}
       {...props}
     />
+  );
+}
+
+function MovingSpotlights() {
+  const [lightRefs, setLightRefs] = useState(
+    Array(5)
+      .fill()
+      .map(() => useRef())
+  );
+  useFrame((state) => {
+    lightRefs.forEach((lightRef, index) => {
+      lightRef.current.position.x =
+        Math.cos(state.clock.getElapsedTime() + index) * 1.5;
+      lightRef.current.position.y =
+        Math.sin(state.clock.getElapsedTime() + index) * 1.5;
+      lightRef.current.color = new THREE.Color("white");
+    });
+  });
+
+  return (
+    <>
+      {lightRefs.map((lightRef, index) => (
+        <spotLight
+          key={index}
+          ref={lightRef}
+          penumbra={1}
+          intensity={1.5}
+          angle={Math.PI / 2}
+          distance={2}
+          decay={2}
+          scale={[1, 1, 1]}
+          position={[0, 0, 0.2]}
+        />
+      ))}
+    </>
   );
 }
