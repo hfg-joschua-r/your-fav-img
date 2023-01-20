@@ -41,14 +41,14 @@ function App() {
       </div>
 
       {/* MOBILE VERSION */}
-      <div className="App bg-black h-full min-h-screen block lg:hidden">
-        <h1 className="text-ciYellow text-5xl font-serif p-4">your-fave-img</h1>
-        <h1 className="text-ciYellow text-2xl font-serif p-4">
-          Mobile version currently in development
+      <div className="App bg-black h-full min-h-screen block lg:hidden select-none">
+        <h1 className="text-ciYellow text-4xl font-serif text-center pt-6">
+          your-fav-img
         </h1>
-        <div>
-          <img src="/assets/lines.svg" className="top-1/2 my-12" />
-        </div>
+        <HeroSection img={heroImage} />
+        <PrimeImage img={primeImage} orientation={"right"} />
+        <GroupImage imgs={imageGroup} />
+        <FullWidth img={secondaryImage} />
         <Footer />
       </div>
     </>

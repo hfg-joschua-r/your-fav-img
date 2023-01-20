@@ -16,7 +16,7 @@ const Camera = () => {
   //TODO: limit x axis rotation
   return (
     <orbitControls
-      enableRotate={true}
+      enableRotate={false}
       rotateSpeed={0.2}
       enablePan={false}
       enableZoom={false}

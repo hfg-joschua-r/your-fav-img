@@ -9,6 +9,7 @@ const Footer = () => {
             <a
               href="https://linkedin.com/in/joschua-rothenbacher-431448200/"
               className="text-gray-700 hover:text-gray-900 font-bold text-base no-underline"
+              target={"_blank"}
             >
               LinkedIn
             </a>
@@ -18,6 +19,7 @@ const Footer = () => {
             <a
               href="https://twitter.com/cetaryl_"
               className="text-gray-700 hover:text-gray-900 font-extrabold text-base no-underline"
+              target={"_blank"}
             >
               Twitter
             </a>
@@ -25,6 +27,7 @@ const Footer = () => {
           <li className="mr-3">
             <a
               href="https://instagram.com/joschflyboy"
+              target={"_blank"}
               className="text-gray-700 hover:text-gray-900 font-extrabold text-base no-underline"
             >
               Instagram

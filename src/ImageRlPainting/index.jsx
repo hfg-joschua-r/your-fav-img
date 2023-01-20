@@ -10,9 +10,6 @@ import {
   Vector3,
 } from "three";
 
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { KernelSize, Resizer } from "postprocessing";
-
 import OrbitCam from "../components/Camera.jsx";
 
 export default function Poc(props) {
@@ -25,17 +22,6 @@ export default function Poc(props) {
         }}
       >
         <Scene image={props.img} />
-        <EffectComposer>
-          <Bloom
-            intensity={1.0} // The bloom intensity.
-            blurPass={undefined} // A blur pass.
-            width={Resizer.AUTO_SIZE} // render width
-            height={Resizer.AUTO_SIZE} // render height
-            kernelSize={KernelSize.LARGE} // blur kernel size
-            luminanceThreshold={0.6} // luminance threshold. Raise this value to mask out darker elements in the scene.
-            luminanceSmoothing={0.5} // smoothness of the luminance threshold. Range is [0, 1]
-          />
-        </EffectComposer>
       </Canvas>
     </div>
   );
