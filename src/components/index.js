@@ -3,22 +3,22 @@
 let assets = [];
 
 //* Portrait Paintings *//
-import coubertDiffuse from "/assets/Coubert_Desperate/diffuse.jpg";
-import coubertNormal from "/assets/Coubert_Desperate/normal.png";
 import coubertDepth from "/assets/Coubert_Desperate/depth.jpg";
+import coubertDiffuse from "/assets/Coubert_Desperate/diffuse.jpg";
+import coubertNormal from "/assets/Coubert_Desperate/normal.jpg";
 
 const coubert = {
   diffuse: coubertDiffuse,
   normal: coubertNormal,
   depth: coubertDepth,
-  width: 1200,
-  height: 982,
+  width: 4160 / 3.5,
+  height: 6240 / 3.5,
   type: "hero",
 };
 
+import gericaultDepth from "/assets/Madwoman_Gericault/depth.jpeg";
 import gericaultDiffuse from "/assets/Madwoman_Gericault/diffuse.jpeg";
 import gericaultNormal from "/assets/Madwoman_Gericault/normal.jpeg";
-import gericaultDepth from "/assets/Madwoman_Gericault/depth.jpeg";
 
 const gericault = {
   diffuse: gericaultDiffuse,
@@ -45,9 +45,9 @@ const gericault = {
 //   type: "painting",
 // };
 
+import mengsDepth from "/assets/Raphael_Mengs/depth.jpeg";
 import mengsDiffuse from "/assets/Raphael_Mengs/diffuse.jpeg";
 import mengsNormal from "/assets/Raphael_Mengs/normal.jpeg";
-import mengsDepth from "/assets/Raphael_Mengs/depth.jpeg";
 
 const mengs = {
   diffuse: mengsDiffuse,
@@ -64,25 +64,25 @@ const mengs = {
 assets.push(coubert, gericault, mengs); //garshin
 
 //* Portrait images *//
-import joschDiffuse from "/assets/Josch/diffuse.png";
-import joschNormal from "/assets/Josch/normal.png";
-import joschDepth from "/assets/Josch/depth.png";
+import joschDepth from "/assets/Josch/cat-depth.png";
+import joschNormal from "/assets/Josch/cat-normal.png";
+import joschDiffuse from "/assets/Josch/cat.jpg";
 const josch = {
   diffuse: joschDiffuse,
   normal: joschNormal,
   depth: joschDepth,
-  width: 2200,
-  height: 2200,
+  width: 1536 * 4,
+  height: 1024 * 4,
   type: "portrait_secondary",
-  title:"FLUUR, 2022",
-  artist:"Joschua Rothenbacher",
-  medium:"Olympus OM-D E-M10 Mark III",
+  title: "FLUUR, 2022",
+  artist: "Joschua Rothenbacher",
+  medium: "Olympus OM-D E-M10 Mark III",
 };
-assets.push(josch)
+assets.push(josch);
 // "Meisje met de parel"
+import depth from "/assets/1-depth.webp";
 import diffuse from "/assets/1-diffuse.webp";
 import normal from "/assets/1-normal.webp";
-import depth from "/assets/1-depth.webp";
 
 //nat img
 // import natDif from "/assets/nat.jpg";
@@ -95,9 +95,9 @@ import depth from "/assets/1-depth.webp";
 // import lauren_depth from "/assets/lauren_depth.jpeg";
 
 // Portrait
+import portrait_depth from "/assets/portrait_depth.webp";
 import portrait_diffuse from "/assets/portrait_diffuse.webp";
 import portrait_normal from "/assets/portrait_normal.webp";
-import portrait_depth from "/assets/portrait_depth.webp";
 
 //my own
 // import myDiffuse from "/assets/Bild004_Neg.Nr.N4.jpg";
@@ -108,12 +108,12 @@ const img1 = {
   diffuse: diffuse,
   normal: normal,
   depth: depth,
-  width: 1600,
-  height: 1894,
+  width: 1600 * 1.2,
+  height: 1894 * 1.2,
   type: "painting_prime",
-  title:"Girl with a Pearl Earring (1665)",
-  artist:"Johannes Vermeer",
-  medium:"Oil on canvas",
+  title: "Girl with a Pearl Earring (1665)",
+  artist: "Johannes Vermeer",
+  medium: "Oil on canvas",
 };
 assets.push(img1);
 // const img2 = {

@@ -1,17 +1,17 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
+import { Environment, Lightformer, useDepthBuffer } from "@react-three/drei";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { useCallback, useEffect, useRef } from "react";
+import * as THREE from "three";
 import {
+  MeshBasicMaterial,
   MeshStandardMaterial,
   TextureLoader,
   Vector3,
-  MeshBasicMaterial,
 } from "three";
-import * as THREE from "three";
-import { useRef, useCallback, useEffect } from "react";
-import { useDepthBuffer, Environment, Lightformer } from "@react-three/drei";
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import { Resizer, KernelSize } from "postprocessing";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { KernelSize, Resizer } from "postprocessing";
 
 import OrbitCam from "../components/Camera.jsx";
 
@@ -24,7 +24,6 @@ export default function Poc(props) {
           powerPreference: "high-performance",
         }}
       >
-        <fog attach="fog" args={["white", 0, 13]} />
         <Scene image={props.img} />
         <EffectComposer>
           <Bloom
@@ -49,7 +48,7 @@ function Scene({ image }) {
       <OrbitCam />
       <Image img={image} />
       {/* light tone warmer and less redish */}
-      <ambientLight color={"#DBDBDB"} intensity={1.4} />
+      <ambientLight color={"#DBDBDB"} intensity={0.5} />
       <MovingPointLight
         depthBuffer={depthBuffer}
         color="#bdf7ff"
@@ -59,11 +58,7 @@ function Scene({ image }) {
       {/* add other planes left and right */}
       <mesh position={[0, 0, -2]}>
         <planeGeometry args={[30, 30]} attach="geometry" />
-        <meshBasicMaterial
-          color={"#F6F6F6"}
-          attach="material"
-          reflectivity={2}
-        />
+        <meshBasicMaterial color={"#000"} attach="material" reflectivity={2} />
       </mesh>
     </>
   );
@@ -98,14 +93,14 @@ function Image(image, rot) {
 
   //rotation:
   const group = useRef();
-  useFrame(
-    ({ pointer }) =>
-      (group.current.rotation.y = THREE.MathUtils.lerp(
-        group.current.rotation.y,
-        pointer.x * (Math.PI / 8),
-        0.005
-      ))
-  );
+  // useFrame(
+  //   ({ pointer }) =>
+  //     (group.current.rotation.y = THREE.MathUtils.lerp(
+  //       group.current.rotation.y,
+  //       pointer.x * (Math.PI / 8),
+  //       0.005
+  //     ))
+  // );
   return (
     <group ref={group}>
       <mesh castShadow ref={mesh} position={[0, 0, 0]} rotation={[0, 0, 0]}>
@@ -146,7 +141,7 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
     <pointLight
       ref={light}
       castShadow
-      intensity={2}
+      intensity={3}
       distance={2}
       decay={2.5}
       {...props}
