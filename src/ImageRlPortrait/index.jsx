@@ -141,16 +141,16 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
 
 function MovingSpotlights() {
   const [lightRefs, setLightRefs] = useState(
-    Array(5)
+    Array(2)
       .fill()
       .map(() => useRef())
   );
   useFrame((state) => {
     lightRefs.forEach((lightRef, index) => {
       lightRef.current.position.x =
-        Math.cos(state.clock.getElapsedTime() + index) * 1.5;
+        Math.cos(state.clock.getElapsedTime() + index) * 1.2;
       lightRef.current.position.y =
-        Math.sin(state.clock.getElapsedTime() + index) * 1.5;
+        Math.sin(state.clock.getElapsedTime() + index) * 1.3;
       lightRef.current.color = new THREE.Color("white");
     });
   });
@@ -167,7 +167,7 @@ function MovingSpotlights() {
           distance={2}
           decay={2}
           scale={[1, 1, 1]}
-          position={[0, 0, 0.2]}
+          position={[0, 0, 0.5]}
         />
       ))}
     </>

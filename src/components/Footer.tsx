@@ -36,7 +36,7 @@ const Footer = () => {
       variants={footerVariants}
       animate={controls}
       ref={ref}
-      className="border-t border-gray-200 py-8 text-ciYellow z-30 overflow-hidden"
+      className="border-t border-gray-200 py-8 pl-2 lg:pl-0 text-ciYellow z-30 overflow-hidden"
     >
       <motion.div className="container mx-auto flex flex-wrap items-center justify-between">
         <motion.ul className="list-reset flex flex-wrap items-center justify-between mb-6 font-sans">

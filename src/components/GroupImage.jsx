@@ -1,9 +1,7 @@
 import ImageRlPainting from "../ImageRlPainting/index";
+//stylying with framer Motion
 
-//TODO: add props to change "direction" of image, render with conditional rendering
 export default function GroupImage(props) {
-  //props enthält 3 Bilder
-
   const images = props.imgs.map((image, index) => {
     return (
       <div className="col-span-1 row-span-1 h-3/4" key={index}>

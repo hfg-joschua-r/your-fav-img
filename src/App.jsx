@@ -30,7 +30,7 @@ function App() {
   });
 
   const scrollRef = useRef(null);
-  useScrollSnap({ ref: scrollRef, duration: 20, delay: 5 });
+  //useScrollSnap({ ref: scrollRef, duration: 20, delay: 5 });
 
   return (
     <>
