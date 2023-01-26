@@ -42,14 +42,14 @@ function Scene({ image }) {
       />
 
       {/* add other planes left and right */}
-      <mesh position={[0, 0, -2]}>
+      {/* <mesh position={[0, 0, -2]}>
         <planeGeometry args={[30, 30]} attach="geometry" />
         <meshBasicMaterial
           color={"#1C1C1C"}
           attach="material"
           reflectivity={2}
         />
-      </mesh>
+      </mesh> */}
     </>
   );
 }

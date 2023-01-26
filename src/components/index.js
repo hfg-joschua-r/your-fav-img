@@ -64,15 +64,15 @@ const mengs = {
 assets.push(coubert, gericault, mengs); //garshin
 
 //* Portrait images *//
-import joschDepth from "/assets/Josch/cat-depth.png";
-import joschNormal from "/assets/Josch/cat-normal.png";
-import joschDiffuse from "/assets/Josch/cat.jpg";
+import joschDepth from "/assets/Josch/depth.jpg";
+import joschDiffuse from "/assets/Josch/diffuse.jpg";
+import joschNormal from "/assets/Josch/normal.jpg";
 const josch = {
   diffuse: joschDiffuse,
   normal: joschNormal,
   depth: joschDepth,
-  width: 1536 * 4,
-  height: 1024 * 4,
+  width: 3021 * 1.8,
+  height: 1810 * 1.8,
   type: "portrait_secondary",
   title: "FLUUR, 2022",
   artist: "Joschua Rothenbacher",
@@ -108,8 +108,8 @@ const img1 = {
   diffuse: diffuse,
   normal: normal,
   depth: depth,
-  width: 1600 * 1.2,
-  height: 1894 * 1.2,
+  width: 1600,
+  height: 1894,
   type: "painting_prime",
   title: "Girl with a Pearl Earring (1665)",
   artist: "Johannes Vermeer",
