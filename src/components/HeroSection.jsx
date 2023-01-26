@@ -6,15 +6,20 @@ export default function HeroSection(props) {
   const [textVisible, setTextVisible] = useState(false);
 
   return (
-    <div className="relative grid lg:grid-cols-2 h-screen content-center items-center pt-3 lg:pt-10 pb-32">
+    <div className="relative grid lg:grid-cols-2 h-screen content-center items-center pt-3 lg:pt-10 pb-32 overflow-hidden">
       <div className="text-ciYellowLightest text-2xl lg:text-5xl font-sans text-center font-normal col-span-1">
         <RevealHeadline />
       </div>
       <motion.div
         initial={{ y: 1200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, type: "tween", delay: 0.7 }}
-        className="h-[70vh] lg:h-screen lg:pr-9 pb-8 z-10"
+        transition={{
+          duration: 0.7,
+          type: "tween",
+          ease: "easeInOut",
+          delay: 0.7,
+        }}
+        className="h-[70vh] lg:h-screen lg:pr-9 pb-8 z-10 "
         onHoverStart={() => setTextVisible(true)}
       >
         <ImageRlHero img={props.img} />

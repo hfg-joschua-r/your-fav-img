@@ -1,5 +1,10 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import {
+  motion,
+  useAnimation,
+  useAnimationControls,
+  useInView,
+} from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import ImageRlPainting from "../ImageRlPainting/index";
 import { RevealText } from "./HeroSection";
 
@@ -10,17 +15,43 @@ export default function PrimeImage(props) {
 
   const containerRef = useRef(null);
   const containerInView = useInView(containerRef, {
-    threshold: 1,
     once: false,
   });
 
+  const imageVariants = {
+    in: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        type: "tween",
+        ease: "easeInOut",
+        delay: 0.3,
+      },
+    },
+    out: {
+      y: 200,
+      opacity: 0,
+    },
+  };
+
+  const controls = useAnimation();
+  useEffect(() => {
+    if (containerInView) {
+      controls.start("in");
+    } else {
+      controls.start("out");
+    }
+  }, [controls, containerInView]);
+
   return (
     <>
-      <div className="grid grid-cols-8 grid-rows-4 lg:grid-rows-2 items-center bg-ciYellowLightest h-screen -mt-16 mb-10 z-10">
+      <div className="grid grid-cols-8 grid-rows-4 lg:grid-rows-2 items-center bg-ciYellowLightest h-screen -mt-16 mb-10 z-10 overflow-hidden">
         <motion.div
+          variants={imageVariants}
+          initial="out"
+          animate={controls}
           onHoverStart={() => setTextVisible(true)}
-          initial={containerInView ? { y: 200, opacity: 0 } : { opacity: 0 }}
-          animate={containerInView ? { y: 0, opacity: 1 } : { opacity: 1 }}
           className="col-span-8 lg:col-span-5 row-span-4 lg:row-span-2 w-full h-full lg:mt-60 lg:pl-20 z-20 lg:order-1 order-2"
         >
           <ImageRlPainting img={props.img} />
