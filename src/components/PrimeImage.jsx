@@ -10,13 +10,15 @@ import { RevealText } from "./HeroSection";
 
 export default function PrimeImage(props) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { threshold: 0.5, once: false });
+  const isInView = useInView(ref, { threshold: 1, once: false });
   const [textVisible, setTextVisible] = useState(false);
 
   const containerRef = useRef(null);
   const containerInView = useInView(containerRef, {
     once: false,
   });
+  const imageRef = useRef(null);
+  const imageInView = useInView(ref, { once: true, threshold: 0.5 });
 
   const imageVariants = {
     in: {
@@ -26,7 +28,7 @@ export default function PrimeImage(props) {
         duration: 0.7,
         type: "tween",
         ease: "easeInOut",
-        delay: 0.3,
+        delay: 1,
       },
     },
     out: {
@@ -37,17 +39,18 @@ export default function PrimeImage(props) {
 
   const controls = useAnimation();
   useEffect(() => {
-    if (containerInView) {
+    if (imageInView) {
       controls.start("in");
     } else {
       controls.start("out");
     }
-  }, [controls, containerInView]);
+  }, [controls, imageInView]);
 
   return (
     <>
       <div className="grid grid-cols-8 grid-rows-4 lg:grid-rows-2 items-center bg-ciYellowLightest h-screen -mt-16 mb-10 z-10 overflow-hidden">
         <motion.div
+          ref={imageRef}
           variants={imageVariants}
           initial="out"
           animate={controls}

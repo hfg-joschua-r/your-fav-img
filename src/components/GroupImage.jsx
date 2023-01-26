@@ -4,20 +4,22 @@ import ImageRlPainting from "../ImageRlPainting/index";
 export default function GroupImage(props) {
   const images = props.imgs.map((image, index) => {
     return (
-      <div className="col-span-1 row-span-1 h-3/4" key={index}>
-        <ImageRlPainting img={image} />
-        <div className="text-ciWhite items-start px-2 pt-4 text-left bg-[url('/assetsImg/linesVert.svg')] bg-contain h-full lg:h-2/5 min-w-full bg-no-repeat">
-          <p className="font-extrabold px-4 lg:-mt-0 lg:pt-4 z-10">
-            {image.title}
-          </p>
-          <p className="font-normal px-4 pt-1 leading-4 z-10">{image.artist}</p>
-          <p className="font-normal px-4 z-10">{image.medium}</p>
+      <section className="col-span-1 row-span-1 grid grid-rows-3" key={index}>
+        <div className="row-span-2 h-full">
+          <ImageRlPainting img={image} />
         </div>
-      </div>
+        <div className="h-full row-span-1 text-ciWhite text-left lg:bg-[url('/assetsImg/linesVert.svg')] bg-contain bg-no-repeat px-4">
+          <p className="font-extrabold text-md lg:text-lg">{image.title}</p>
+          <p className="font-normal pt-1 leading-4 text-sm lg:text-base z-10">
+            {image.artist}
+          </p>
+          <p className="font-normal text-sm lg:text-base">{image.medium}</p>
+        </div>
+      </section>
     );
   });
   return (
-    <div className="relative grid lg:grid-rows-1 gap-12 grid-cols-1 lg:grid-cols-3 items-center lg:px-20 h-screen lg:mb-60">
+    <div className="grid gap-12 grid-rows-3 lg:grid-rows-1 grid-cols-1 lg:grid-cols-3 lg:px-20 h-screen">
       {images}
     </div>
   );
