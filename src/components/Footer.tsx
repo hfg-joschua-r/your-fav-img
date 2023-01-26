@@ -1,46 +1,79 @@
-import React, { useRef, useState } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 
 const Footer = () => {
+  const footerVariants = {
+    out: { opacity: 0, y: 100 },
+    in: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, delayChildren: 0.5, staggerChildren: 0.4 },
+    },
+  };
+  const itemVariants = {
+    out: { opacity: 0, y: 100 },
+    in: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, type: "tween", ease: "anticipate" },
+    },
+  };
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: false });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("in");
+    } else {
+      controls.start("out");
+    }
+  }, [controls, inView]);
+
   return (
-    <footer className="border-t border-gray-200 py-8 text-ciYellow">
-      <div className="container mx-auto flex flex-wrap items-center justify-between">
-        <ul className="list-reset flex flex-wrap items-center justify-between mb-6 font-sans">
-          <li className="mr-3">
+    <motion.footer
+      initial="out"
+      variants={footerVariants}
+      animate={controls}
+      ref={ref}
+      className="border-t border-gray-200 py-8 text-ciYellow z-30 overflow-hidden"
+    >
+      <motion.div className="container mx-auto flex flex-wrap items-center justify-between">
+        <motion.ul className="list-reset flex flex-wrap items-center justify-between mb-6 font-sans">
+          <motion.li className="mr-3" variants={itemVariants}>
             <a
               href="https://linkedin.com/in/joschua-rothenbacher-431448200/"
-              className="text-gray-700 hover:text-gray-900 font-bold text-base no-underline"
+              className=" no-underline"
               target={"_blank"}
             >
               LinkedIn
             </a>
-          </li>
+          </motion.li>
 
-          <li className="mr-3">
+          <motion.li className="mr-3" variants={itemVariants}>
             <a
-              href="https://twitter.com/cetaryl_"
-              className="text-gray-700 hover:text-gray-900 font-extrabold text-base no-underline"
+              href="https://github.com/hfg-joschua-r"
+              className="no-underline"
               target={"_blank"}
             >
-              Twitter
+              GitHub
             </a>
-          </li>
-          <li className="mr-3">
+          </motion.li>
+          <motion.li className="mr-3" variants={itemVariants}>
             <a
               href="https://instagram.com/joschflyboy"
               target={"_blank"}
-              className="text-gray-700 hover:text-gray-900 font-extrabold text-base no-underline"
+              className=" no-underline"
             >
               Instagram
             </a>
-          </li>
-          <li className="ml-6">
-            <p className="text-base text-gray-700 font-norma no-underline">
-              Copyright 2022
-            </p>
-          </li>
-        </ul>
-      </div>
-    </footer>
+          </motion.li>
+          <motion.li className="ml-6" variants={itemVariants}>
+            <p className=" font-thin no-underline">Copyright 2022</p>
+          </motion.li>
+        </motion.ul>
+      </motion.div>
+    </motion.footer>
   );
 };
 

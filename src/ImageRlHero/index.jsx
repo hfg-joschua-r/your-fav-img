@@ -1,12 +1,14 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
 import {
+  Html,
   Lightformer,
   Scroll,
   ScrollControls,
   useDepthBuffer,
+  useProgress,
 } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useCallback, useEffect, useRef } from "react";
+import { Suspense, useCallback, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { MeshStandardMaterial, TextureLoader, Vector3 } from "three";
 
@@ -26,18 +28,20 @@ export default function ImageRlHero(props) {
         }}
         className="container-xl box-content w-full"
       >
-        <Scene image={props.img} />
-        <EffectComposer>
-          <Bloom
-            intensity={1.0} // The bloom intensity.
-            blurPass={undefined} // A blur pass.
-            width={Resizer.AUTO_SIZE} // render width
-            height={Resizer.AUTO_SIZE} // render height
-            kernelSize={KernelSize.LARGE} // blur kernel size
-            luminanceThreshold={0.6} // luminance threshold. Raise this value to mask out darker elements in the scene.
-            luminanceSmoothing={0.5} // smoothness of the luminance threshold. Range is [0, 1]
-          />
-        </EffectComposer>
+        <Suspense fallback={<Loader />}>
+          <Scene image={props.img} />
+          <EffectComposer>
+            <Bloom
+              intensity={1.0} // The bloom intensity.
+              blurPass={undefined} // A blur pass.
+              width={Resizer.AUTO_SIZE} // render width
+              height={Resizer.AUTO_SIZE} // render height
+              kernelSize={KernelSize.LARGE} // blur kernel size
+              luminanceThreshold={0.6} // luminance threshold. Raise this value to mask out darker elements in the scene.
+              luminanceSmoothing={0.5} // smoothness of the luminance threshold. Range is [0, 1]
+            />
+          </EffectComposer>
+        </Suspense>
       </Canvas>
     </>
   );
@@ -50,20 +54,12 @@ function Scene({ image }) {
       <OrbitCam />
       <Image img={image} />
       {/* light tone warmer and less redish */}
-      <ambientLight color={"#1F2702"} intensity={20} />
+      <ambientLight color={"#F2FCCF"} intensity={0.4} />
       <MovingPointLight
         depthBuffer={depthBuffer}
         color="#F9FFE6"
         position={[0, 0, 0]}
       />
-      <mesh position={[0, 0, -0.1]}>
-        <planeGeometry args={[10, 10]} attach="geometry" />
-        <meshBasicMaterial
-          color={"#101010"}
-          attach="material"
-          reflectivity={1}
-        />
-      </mesh>
     </>
   );
 }
@@ -127,10 +123,18 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
     <pointLight
       ref={light}
       castShadow
-      intensity={1}
+      intensity={1.75}
       distance={1}
       decay={2.5}
       {...props}
     />
+  );
+}
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <Html center as="div" wrapperClass="bg-ciYellowDark text-ciYellowLightest">
+      {progress.toFixed()} % loaded
+    </Html>
   );
 }
