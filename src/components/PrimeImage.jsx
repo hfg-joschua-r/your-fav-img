@@ -28,7 +28,7 @@ export default function PrimeImage(props) {
         duration: 0.7,
         type: "tween",
         ease: "easeInOut",
-        delay: 1,
+        delay: 0.7,
       },
     },
     out: {

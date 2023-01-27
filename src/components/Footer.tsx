@@ -69,7 +69,7 @@ const Footer = () => {
             </a>
           </motion.li>
           <motion.li className="ml-6" variants={itemVariants}>
-            <p className=" font-thin no-underline">Copyright 2022</p>
+            <p className=" font-thin no-underline">Copyright 2023</p>
           </motion.li>
         </motion.ul>
       </motion.div>
