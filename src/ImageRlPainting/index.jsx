@@ -1,14 +1,9 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
-import { Environment, Lightformer, useDepthBuffer } from "@react-three/drei";
+import { useDepthBuffer } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useCallback, useEffect, useRef } from "react";
 import * as THREE from "three";
-import {
-  MeshBasicMaterial,
-  MeshStandardMaterial,
-  TextureLoader,
-  Vector3,
-} from "three";
+import { TextureLoader, Vector3 } from "three";
 
 import OrbitCam from "../components/Camera.jsx";
 

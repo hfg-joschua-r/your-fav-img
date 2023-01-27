@@ -24,17 +24,17 @@ export default function FullWidth(props) {
   }, [controller, isInView]);
 
   return (
-    <motion.div
-      ref={ref}
-      variants={variants}
-      initial="hidden"
-      animate={controller}
-      className="relative w-screen items-center h-64 lg:h-2/3 mt-16 mb-8"
-    >
-      {/* lg:h-screen */}
-      <div className="w-full h-full z-10">
+    <div className="h-[70vh] mb-8 mt-8">
+      <motion.div
+        ref={ref}
+        variants={variants}
+        initial="hidden"
+        animate={controller}
+        className="w-screen mt-16 h-full "
+      >
+        {/* h-64 mobile */}
         <ImageRlPortrait img={props.img} />
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
