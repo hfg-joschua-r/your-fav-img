@@ -1,19 +1,11 @@
-//lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
-import {
-  Html,
-  Lightformer,
-  Scroll,
-  ScrollControls,
-  useDepthBuffer,
-  useProgress,
-} from "@react-three/drei";
+import { Html, useDepthBuffer, useProgress } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { Suspense, useCallback, useEffect, useRef } from "react";
 import * as THREE from "three";
-import { MeshStandardMaterial, TextureLoader, Vector3 } from "three";
+import { TextureLoader, Vector3 } from "three";
 
-import { Bloom, EffectComposer, Glitch } from "@react-three/postprocessing";
-import { GlitchMode, KernelSize, Resizer } from "postprocessing";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { KernelSize, Resizer } from "postprocessing";
 
 import OrbitCam from "../components/HeroCamera";
 

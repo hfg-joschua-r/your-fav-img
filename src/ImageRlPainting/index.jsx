@@ -1,7 +1,6 @@
-//lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
-import { useDepthBuffer } from "@react-three/drei";
+import { Html, useDepthBuffer, useProgress } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useCallback, useEffect, useRef } from "react";
+import { Suspense, useCallback, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { TextureLoader, Vector3 } from "three";
 
@@ -16,7 +15,9 @@ export default function Poc(props) {
           powerPreference: "high-performance",
         }}
       >
-        <Scene image={props.img} />
+        <Suspense fallback={<Loader />}>
+          <Scene image={props.img} />
+        </Suspense>
       </Canvas>
     </div>
   );
@@ -133,5 +134,14 @@ function MovingPointLight({ vec = new Vector3(), ...props }) {
       decay={2.5}
       {...props}
     />
+  );
+}
+
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <Html center as="div" wrapperClass="bg-ciYellowDark text-ciYellowLightest">
+      {progress.toFixed()} % loaded
+    </Html>
   );
 }

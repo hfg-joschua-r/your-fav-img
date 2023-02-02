@@ -1,16 +1,16 @@
 //lets refactor this :) following: https://www.holyday.me/r3f-image/ && using shaders and so forth
+import { Html, useDepthBuffer, useProgress } from "@react-three/drei";
+import { useCallback, useEffect, useRef } from "react";
 import { TextureLoader, Vector3 } from "three";
-import { useRef, useCallback, useEffect } from "react";
-import { useDepthBuffer } from "@react-three/drei";
 
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 
 import OrbitCam from "../components/Camera.jsx";
 
 export default function Poc(props) {
   return (
     <div className="canvas">
-      <Canvas shadows >
+      <Canvas shadows>
         <Scene image={props.img} />
       </Canvas>
     </div>
@@ -21,9 +21,9 @@ function Scene({ image }) {
   const depthBuffer = useDepthBuffer({ frames: 20 });
   return (
     <>
-     <OrbitCam/>
+      <OrbitCam />
       <Image img={image} />
-      <ambientLight color={"#ffffff"} intensity={.04} />
+      <ambientLight color={"#ffffff"} intensity={0.04} />
       <MovingPointLight
         depthBuffer={depthBuffer}
         color="#ffffff"
@@ -56,13 +56,12 @@ function Image(image) {
     };
   }, [updateMousePosition]);
 
-
   //scale image down to about 1 / 1
-  const width = image.img.width /1000;
-  const height = image.img.height / 1000; 
+  const width = image.img.width / 1000;
+  const height = image.img.height / 1000;
   return (
     <mesh castShadow ref={mesh}>
-      <planeGeometry args={[width, height]} position={[0, .5,0]} />
+      <planeGeometry args={[width, height]} position={[0, 0.5, 0]} />
       <meshStandardMaterial
         map={diffuseMap}
         normalMap={normalMap}
@@ -73,28 +72,35 @@ function Image(image) {
   );
 }
 
+function MovingPointLight({ vec = new Vector3(), ...props }) {
+  const light = useRef();
+  const viewport = useThree((state) => state.viewport);
+  useFrame(({ pointer, mouse }) => {
+    const x = (pointer.x * viewport.width) / 2;
+    const y = (pointer.y * viewport.height) / 2;
 
-function MovingPointLight({ vec = new Vector3(), ...props }){
-    const light = useRef();
-    const viewport = useThree((state) => state.viewport);
-    useFrame(({ pointer, mouse }) => {
-        const x = (pointer.x * viewport.width) / 2
-        const y = (pointer.y * viewport.height) / 2
+    const xN = mouse.x;
+    const yN = mouse.y;
+    light.current.position.set(xN, yN, 0.6);
+  });
 
-        const xN = mouse.x 
-        const yN = mouse.y
-        light.current.position.set(xN, yN, 0.6)
-        
-      })
+  return (
+    <pointLight
+      ref={light}
+      castShadow
+      intensity={2.5}
+      distance={1.8}
+      decay={2}
+      {...props} //not sure whether we need this
+    />
+  );
+}
 
-      return (
-        <pointLight
-          ref={light}
-          castShadow
-          intensity={2.5}
-          distance={1.8}
-          decay={2}
-          {...props} //not sure whether we need this
-        />
-      )
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <Html center as="div" wrapperClass="bg-ciYellowDark text-ciYellowLightest">
+      {progress.toFixed()} % loaded
+    </Html>
+  );
 }
